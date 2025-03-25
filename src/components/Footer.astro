@@ -1,0 +1,68 @@
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 Bordados Artesanales. Todos los derechos reservados.</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/525548040547?text=Hola!%20Me%20interesa%20tus%20bordados" class="social-icon whatsapp" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Etsy">
+                <i class="fab fa-etsy"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<style>
+    footer {
+        background-color: #333;
+        color: white;
+        padding: 2rem 1rem;
+        margin-top: 2rem;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .social-icon {
+        color: white;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+        color: #ffd700;
+    }
+
+    .social-icon.whatsapp:hover {
+        color: #25D366; /* WhatsApp brand color */
+        transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+        .social-icons {
+            gap: 1rem;
+        }
+
+        .social-icon {
+            font-size: 1.2rem;
+        }
+    }
+</style> 
