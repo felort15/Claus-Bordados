@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 ---
 
 <!DOCTYPE html>
@@ -11,122 +12,33 @@ import Footer from '../components/Footer.astro';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nosotros - Bordados Artesanales</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            background-color: #f5f5f5;
-        }
-
-        .about-section {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .about-section h2 {
-            color: #333;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-size: 2rem;
-        }
-
-        .about-content {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .about-text {
-            text-align: justify;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            color: #666;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .feature {
-            text-align: center;
-            padding: 1.5rem;
-            background: #f8f8f8;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature i {
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .feature h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .about-section {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 <body>
     <Header />
     <Navigation />
     <main>
-        <div class="about-section">
-            <h2>Nuestra Historia</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Desde 2015, Bordados Artesanales ha sido un referente en el arte del bordado en México. Nuestra pasión por crear piezas únicas y hermosas nació de una tradición familiar que se ha transmitido de generación en generación.</p>
-                    <p>Lo que comenzó como un pequeño taller en la Ciudad de México, se ha convertido en un espacio creativo donde cada puntada cuenta una historia. Nuestro compromiso con la calidad y la atención al detalle nos ha permitido crear una colección diversa de bordados que van desde diseños tradicionales hasta creaciones contemporáneas.</p>
+        <div class="max-w-4xl mx-auto my-8 p-8 bg-white rounded-xl shadow-md">
+            <h2 class="text-text-primary text-3xl mb-6 text-center">Nuestra Historia</h2>
+            <div class="space-y-8">
+                <div class="text-justify">
+                    <p class="text-text-primary mb-4">Desde 2015, Bordados Artesanales ha sido un referente en el arte del bordado en México. Nuestra pasión por crear piezas únicas y hermosas nació de una tradición familiar que se ha transmitido de generación en generación.</p>
+                    <p class="text-text-primary">Lo que comenzó como un pequeño taller en la Ciudad de México, se ha convertido en un espacio creativo donde cada puntada cuenta una historia. Nuestro compromiso con la calidad y la atención al detalle nos ha permitido crear una colección diversa de bordados que van desde diseños tradicionales hasta creaciones contemporáneas.</p>
                 </div>
-                <div class="features">
-                    <div class="feature">
-                        <i class="fas fa-heart"></i>
-                        <h3>Arte con Amor</h3>
-                        <p>Cada pieza es creada con dedicación y cariño, asegurando la más alta calidad en cada detalle.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg transition-transform hover:-translate-y-1">
+                        <i class="fas fa-heart text-4xl text-text-primary mb-4"></i>
+                        <h3 class="text-text-primary text-xl mb-2">Arte con Amor</h3>
+                        <p class="text-text-primary text-sm">Cada pieza es creada con dedicación y cariño, asegurando la más alta calidad en cada detalle.</p>
                     </div>
-                    <div class="feature">
-                        <i class="fas fa-paint-brush"></i>
-                        <h3>Diseños Únicos</h3>
-                        <p>Ofrecemos una amplia variedad de diseños personalizados y exclusivos para cada cliente.</p>
+                    <div class="text-center p-6 bg-gray-50 rounded-lg transition-transform hover:-translate-y-1">
+                        <i class="fas fa-paint-brush text-4xl text-text-primary mb-4"></i>
+                        <h3 class="text-text-primary text-xl mb-2">Diseños Únicos</h3>
+                        <p class="text-text-primary text-sm">Ofrecemos una amplia variedad de diseños personalizados y exclusivos para cada cliente.</p>
                     </div>
-                    <div class="feature">
-                        <i class="fas fa-hand-holding-heart"></i>
-                        <h3>Tradición</h3>
-                        <p>Mantenemos viva la tradición del bordado artesanal, combinándola con técnicas modernas.</p>
+                    <div class="text-center p-6 bg-gray-50 rounded-lg transition-transform hover:-translate-y-1">
+                        <i class="fas fa-hand-holding-heart text-4xl text-text-primary mb-4"></i>
+                        <h3 class="text-text-primary text-xl mb-2">Tradición</h3>
+                        <p class="text-text-primary text-sm">Mantenemos viva la tradición del bordado artesanal, combinándola con técnicas modernas.</p>
                     </div>
                 </div>
             </div>
