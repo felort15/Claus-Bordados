@@ -1,199 +1,30 @@
 ---
-const images = [
-    { 
-        src: "/images/Baby yoda.jpg", 
-        alt: "Baby Yoda Bordado", 
-        title: "Baby Yoda",
-        description: "Un adorable bordado del personaje Baby Yoda, capturando su dulce mirada y expresiones características."
-    },
-    { 
-        src: "/images/Dragon.jpg", 
-        alt: "Dragón Bordado", 
-        title: "Dragón",
-        description: "Un majestuoso dragón bordado con detalles intricados y colores vibrantes que cobran vida en el tejido."
-    },
-    { 
-        src: "/images/Doctora.jpg", 
-        alt: "Doctora Bordada", 
-        title: "Doctora",
-        description: "Representación artística de una doctora, simbolizando la dedicación y el cuidado en el campo médico."
-    },
-    { 
-        src: "/images/El pricipito.jpg", 
-        alt: "El Principito Bordado", 
-        title: "El Principito",
-        description: "El clásico personaje de El Principito, bordado con delicadeza y los elementos característicos de la historia."
-    },
-    { 
-        src: "/images/Gatos.jpg", 
-        alt: "Gatos Bordados", 
-        title: "Gatos",
-        description: "Una encantadora representación de gatos, capturando su gracia y personalidad en cada puntada."
-    },
-    { 
-        src: "/images/Gorros de Navidad.jpg", 
-        alt: "Gorros de Navidad Bordados", 
-        title: "Gorros de Navidad",
-        description: "Festivos gorros de Navidad bordados con motivos navideños y colores tradicionales de la temporada."
-    },
-    { 
-        src: "/images/Hawaii.jpg", 
-        alt: "Hawaii Bordado", 
-        title: "Hawaii",
-        description: "Un diseño tropical que evoca la belleza y el espíritu relajado de las islas hawaianas."
-    },
-    { 
-        src: "/images/Las Chivas.jpg", 
-        alt: "Las Chivas Bordadas", 
-        title: "Las Chivas",
-        description: "Homenaje al equipo de fútbol Chivas, con sus colores característicos y elementos distintivos."
-    },
-    { 
-        src: "/images/Unicornio.jpg", 
-        alt: "Unicornio Bordado", 
-        title: "Unicornio",
-        description: "Un mágico unicornio bordado con detalles brillantes y colores fantásticos que lo hacen especial."
-    },
-    { 
-        src: "/images/Virgin.jpg", 
-        alt: "Virgen Bordada", 
-        title: "Virgen",
-        description: "Una representación devota de la Virgen, bordada con respeto y detalles religiosos significativos."
-    }
-];
+import '../styles/global.css';
+import Favorites from './Favorites.astro';
+import { images, type Image } from '../data/gallery';
 ---
 
-<div class="gallery" id="gallery">
-    {images.map((image, index) => (
-        <div class={`gallery-item ${index % 2 === 0 ? 'left' : 'right'}`}>
-            <div class="image-container">
-                <img src={image.src} alt={image.alt} />
+<Favorites />
+
+<div class="max-w-7xl mx-auto px-4 py-8 flex flex-col gap-12" id="gallery" data-testid="gallery">
+    {images.map((image: Image, index: number) => (
+        <div class={`flex flex-col md:flex-row items-center gap-4 md:gap-8 bg-secondary rounded-xl overflow-hidden shadow-md transition-transform hover:-translate-y-1 min-h-[250px] max-w-3xl mx-auto ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`} data-testid="gallery-item">
+            <div class="flex-1 h-[250px] w-full overflow-hidden flex items-center justify-center p-2 bg-gray-50 relative rounded-lg m-2">
+                <img src={image.src} alt={image.alt} class="w-full h-full object-contain max-w-full max-h-full block mx-auto rounded-lg" />
+                <button class="favorite-button bg-transparent border-none cursor-pointer p-1 text-text-primary transition-transform hover:scale-110 absolute top-2 right-2" data-image={JSON.stringify(image)} aria-label="Agregar a favoritos">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </button>
             </div>
-            <div class="content-container">
-                <h3>{image.title}</h3>
-                <p>{image.description}</p>
+            <div class="flex-1 p-4 md:p-6 flex flex-col justify-center gap-2 min-w-[250px] w-full">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-text-primary text-xl font-semibold mb-1">{image.title}</h3>
+                </div>
+                <p class="text-text-primary/80 leading-relaxed text-sm">{image.description}</p>
             </div>
         </div>
     ))}
 </div>
 
-<style>
-    .gallery {
-        max-width: 1200px;
-        margin: 2rem auto;
-        padding: 0 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
-    }
-
-    .gallery-item {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-        min-height: 250px;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .gallery-item:hover {
-        transform: translateY(-5px);
-    }
-
-    .gallery-item.left {
-        flex-direction: row;
-    }
-
-    .gallery-item.right {
-        flex-direction: row-reverse;
-    }
-
-    .image-container {
-        flex: 1;
-        height: 250px;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem;
-        background-color: #f8f8f8;
-        position: relative;
-        border-radius: 10px;
-        margin: 0.5rem;
-    }
-
-    .image-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        max-width: 100%;
-        max-height: 100%;
-        display: block;
-        margin: 0 auto;
-        border-radius: 10px;
-    }
-
-    .content-container {
-        flex: 1;
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 0.5rem;
-        min-width: 250px;
-    }
-
-    .content-container h3 {
-        color: #333;
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .content-container p {
-        color: #666;
-        line-height: 1.4;
-        font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-        .gallery-item {
-            flex-direction: column !important;
-            min-height: auto;
-            max-width: 100%;
-            gap: 1rem;
-        }
-
-        .image-container {
-            height: 150px;
-            padding: 0.25rem;
-            width: 80%;
-            margin: 0.5rem auto;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            max-width: 100%;
-        }
-
-        .content-container {
-            padding: 1rem;
-            min-width: auto;
-            text-align: center;
-        }
-
-        .content-container h3 {
-            font-size: 1.2rem;
-        }
-
-        .content-container p {
-            font-size: 0.8rem;
-        }
-    }
-</style> 
+<script src="../scripts/gallery.js"></script> 
